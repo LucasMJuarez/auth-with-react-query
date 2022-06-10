@@ -10,9 +10,16 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "typeRoots": ["node_modules/@types"],
-    "types": ["node"],
-    "lib": ["esnext", "es2018"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "esnext",
+      "es2018"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
@@ -24,6 +31,13 @@
     "noEmit": true,
     "downlevelIteration": true
   },
+  "prettier/prettier": [
+    "error",
+    {
+      "singleQuote": true,
+      "parser": "flow"
+    }
+  ],
   "include": [
     "src/**/*.ts",
     "../../shared/types",

@@ -36,6 +36,13 @@
     "downlevelIteration": true,
     "strict": true
   },
+  "prettier/prettier": [
+    "error",
+    {
+      "singleQuote": true,
+      "parser": "flow"
+    }
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

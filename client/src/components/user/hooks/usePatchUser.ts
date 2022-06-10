@@ -39,6 +39,20 @@ export function usePatchUser(): UseMutateFunction<
   const { mutate: patchUser } = useMutation(
     (newUserData: User) => patchUserOnServer(newUserData, user),
     {
+      //onMutate returns context that is passed to onError
+      onMutate: async (newUserData: User | null) => {
+        // cancel any outgoing queries for user data, so old server data
+        // doesn't overwrite our optimistic updates
+
+        // snapshop of previous user value
+
+        // optimitically update cache with the new user value
+
+        // return context object with snapshotted value
+      },
+      onError:(previousUserDataContext) => {
+        // rollback cache to previous user value
+      }
       onSuccess: (userData: User | null) => {
         if (user) {
           updateUser(userData);
@@ -48,6 +62,9 @@ export function usePatchUser(): UseMutateFunction<
           });
         }
       },
+      onSettled: () => {
+        // invalidate user query to make sure we're in sync with server data
+      }
     },
   );
 
